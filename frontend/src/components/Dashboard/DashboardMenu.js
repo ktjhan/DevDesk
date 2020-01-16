@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { helperIdNewToken, studentIdNewToken } from "../../actions/actions";
+import jwt_decode from "jwt-decode";
 
 import { DashNav, DashNav2 } from "../../hooks/index";
 
@@ -17,6 +18,17 @@ const DashboardMenu = props => {
   //   e.preventDefault();
   //   props.studentIdNewToken();
   // }
+  useEffect(() => {
+   // Update the document title using the browser API
+   let initialToken = localStorage.getItem("Authorization");
+   console.log("initialToken", initialToken);
+
+   let decoded = jwt_decode(initialToken);
+   console.log("decoded", decoded);
+
+   console.log("student decoded", decoded.student_id);
+   console.log("helper decoded", decoded.helper_id);
+ },[]);
 
   return (
     <section>
