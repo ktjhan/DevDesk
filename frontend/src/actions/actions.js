@@ -230,17 +230,19 @@ export const EDITING_TICKET_START = "EDITING_TICKET_START";
 export const EDITING_TICKET_SUCCESS = "EDITING_TICKET_SUCCESS";
 export const EDITING_TICKET_FAIL = "EDITING_TICKET_FAIL";
 export const editingTicket = (id, updatedTicket) => dispatch => {
-  dispatch({ type: EDITING_TICKET_START, id });
+  // dispatch({ type: EDITING_TICKET_START, id });
   return axiosWithAuth()
     .put(
       `${API}/tickets/edit/${id}`,
       updatedTicket
     )
     .then(res => {
-      dispatch({ type: EDITING_TICKET_SUCCESS, payload: res.data, id });
+      console.log("it works", res);
+      // dispatch({ type: EDITING_TICKET_SUCCESS, payload: res.data, id });
     })
     .catch(err => {
-      dispatch({ type: EDITING_TICKET_FAIL, payload: err });
+      console.log("error", err);
+      // dispatch({ type: EDITING_TICKET_FAIL, payload: err });
     });
 };
 // Action to perform Delete operation
@@ -292,3 +294,10 @@ export const resolveTicket = (id, updatedTicket) => dispatch => {
             dispatch({ type: RESOLVE_TICKET_FAIL, payload: err });
         });
 };
+
+
+
+export const SET_TICKET_ID = "SET_TICKET_ID";
+export const settingTicket = (ticketId) => dispatch => {
+  dispatch({type: SET_TICKET_ID, payload: ticketId})
+}

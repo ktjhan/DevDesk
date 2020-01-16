@@ -23,7 +23,7 @@ class Edit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.editTicket(this.state.ticket.id, this.state.ticket);
+    this.props.editingTicket(this.state.ticket_id, this.state.ticket);
     this.props.history.push("/tickets");
   };
 
@@ -76,6 +76,7 @@ class Edit extends Component {
 
 const mapStateToProps = state => {
   return {
+    ticket_id: state.ticket_id,
     tickets: state.tickets,
     categories: state.categories
   };

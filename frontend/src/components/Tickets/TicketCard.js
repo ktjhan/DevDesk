@@ -3,13 +3,16 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { CardDiv } from "../../hooks/index";
-import { resolveTicket } from "../../actions/actions";
+import { resolveTicket, settingTicket } from "../../actions/actions";
 import Dashboard from "../Dashboard/Dashboard";
 
 const TicketCard = props => {
   const ticket = props.tickets.find(
     ticket => `${ticket.id}` === props.match.params.id
   );
+
+  // props.ticket_id = ticket.id;
+  this.props.settingTicket(ticket.id);
 
   return (
     <Dashboard>
@@ -52,5 +55,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { resolveTicket }
+  { resolveTicket, settingTicket }
 )(TicketCard);

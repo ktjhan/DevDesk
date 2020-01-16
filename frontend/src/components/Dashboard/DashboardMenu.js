@@ -28,6 +28,7 @@ const DashboardMenu = props => {
 
    console.log("student decoded", decoded.student_id);
    console.log("helper decoded", decoded.helper_id);
+   console.log("this ticket edit", props.ticket_id);
  },[]);
 
   return (

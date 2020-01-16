@@ -41,7 +41,8 @@ import {
   CREATE_FAIL,
   CREATE_RESOLVED,
   GET_USER,
-  GET_USER_FAIL
+  GET_USER_FAIL,
+  SET_TICKET_ID
 } from "../actions/actions";
 
 const initialState = {
@@ -63,7 +64,8 @@ const initialState = {
     helper_id: ""
   },
   categories: ["None", "Vue", "React", "JavaScript", "HTML", "CSS"],
-  tickets: []
+  tickets: [],
+  ticket_id: ""
 };
 
 const reducers = (state = initialState, action) => {
@@ -364,7 +366,11 @@ const reducers = (state = initialState, action) => {
                ...state,
                error: action.payload
             };
-
+            case SET_TICKET_ID:
+              return {
+                ...state,
+                ticket_id: action.payload
+              }
     default:
       return state;
   }
